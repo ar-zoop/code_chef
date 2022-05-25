@@ -9,7 +9,7 @@ int main(void) {
 	    char str[MAX];
 	    scanf("%s",str);
         int n=strlen(str),h;
-        int count[36]={0},pos;
+        int count[26]={0},pos;
         h=n/2;
         if(n%2!=0){
 		    str[n]=str[n/2];

@@ -15,9 +15,9 @@ int main(){
 				
 			}
 				
-				printf("%d\n", (count*(count+1))/2);
-			}
-				return 0;
-		}
+		printf("%d\n", (count*(count+1))/2);
+	}
+	return 0;
+}
 		
 	
