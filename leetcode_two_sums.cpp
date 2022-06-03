@@ -7,13 +7,11 @@ public:
         vector <int> ans;
         int pos=-1;
         int temp_res[2];
-        for (itr=nums.begin(); itr!=nums.end() ;itr++){
-            if (*itr<=target){
-                if(mpp.find(*itr) == mpp.end())
-                    mpp[*itr]=1;
-                else
-                    mpp[*itr]++;
-            }
+        for (itr=nums.begin(); itr!=nums.end() ;itr++){            
+            if(mpp.find(*itr) == mpp.end())
+                mpp[*itr]=1;
+            else
+                mpp[*itr]++;
         }
         
         if(target%2==0){
@@ -26,8 +24,8 @@ public:
         }
         
         for(imp=mpp.begin();imp!=mpp.end();imp++){
-            if((*imp).first > (target/2))break;
-            else{
+            
+            
                 int num1=(*imp).first;
                 int search=target-num1;
                 if(mpp.find(search)!=mpp.end()){
@@ -37,7 +35,7 @@ public:
                     break;
                 }
 
-            }
+            
         }
         
         
