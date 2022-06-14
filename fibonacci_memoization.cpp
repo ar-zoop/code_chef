@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int F[51];
+int F[51]; // the array that stores all the results of multiplications 
 int fib(int n){
     if(n<=1)return n;
     if (F[n]!=-1) return F[n];
