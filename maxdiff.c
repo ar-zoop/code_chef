@@ -6,9 +6,9 @@ int main(){
 		scanf("%d%d",&n,&k);
 		if (k>(n/2))
 			k=n-k;
-		long long w[n];
+		int w[n];
 		for (i=0;i<n;i++){
-			scanf("%lld",&w[i]);
+			scanf("%d",&w[i]);
 		}
 		//selection sorting
 		 for (i = 0; i < k; i++) {
@@ -23,7 +23,7 @@ int main(){
 		         w[position] = swap;
 		      }
   		 }
-  		 long long child_sum=0,chef_sum=0;
+  		 int child_sum=0,chef_sum=0;
   		for (i=0;i<k;i++){
   			child_sum+=w[i];
 		}
@@ -31,7 +31,7 @@ int main(){
 			chef_sum+=w[i];
 		}
 		
-  			printf("%lld\n",chef_sum-child_sum);
+  			printf("%d\n",chef_sum-child_sum);
 	}
 	return 0;
 }
