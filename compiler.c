@@ -10,6 +10,7 @@ int top=-1;
 
 int main(){
 	int t;
+    scanf("%d", &t);
     while(t--){
         int i,f=1,count=0;
         char x;
@@ -29,10 +30,10 @@ int main(){
             }
 
         }
-        
+        printf("%d\n", count);
+    
     }
     //checking if balanced or unbalanced	
-      
     
 	return 0;
 }
