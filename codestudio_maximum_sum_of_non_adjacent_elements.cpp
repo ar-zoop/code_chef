@@ -1,42 +1,24 @@
 #include <bits/stdc++.h>
-// int memo[]
+int memo[1001];
 int sub(int idx, int n,vector<int> &nums){
-    int maxSum=INT_MIN;
+    int left=INT_MIN ,right=INT_MIN;
     //base cases
-    if(idx==n-1){
-//         cout<<"idx==n-1:  "<<idx<<endl;
-        return nums[idx];
-    }
+    if(idx==n-1)return nums[idx];
     if(idx>n-1)return 0;
-    //memoization check
-
+    if(memo[idx]!=-1)return memo[idx];
     //pick
-    for (int i=2;i<n;i++){
-        
-        if(idx+i<n){
-//             cout<<"idx= "<<idx<<endl;
-            int leftJump=sub(idx+i, n, nums)+ nums[idx];            
-           maxSum=max(leftJump,maxSum);
-            // cout<<"maxSum= "<<maxSum<<endl;
-//             cout<<maxSum<<endl;
-        }
-        return nums[idx];
-    }
-    //non pick
-    int rightJump=sub(idx,n,nums);
-    maxSum=max(leftJump,maxSum,rightJump);
+    left=sub(idx+2, n, nums)+nums[idx];
 
-    return maxSum;
+    //not pick
+    right=sub(idx+1,n,nums)+0;
 
-    
+    //return max
+    return memo[idx]=max(left,right);
 }
 
 int maximumNonAdjacentSum(vector<int> &nums){
     // Write your code here.
-    int ans=INT_MIN;
-    for(int i=0;i<nums.size();i++){
-        int res=sub(i,nums.size(),nums);
-        ans=max(res,ans);
-    }
-    return ans;
+    memset(memo, -1, sizeof(memo));
+    int res=sub(0,nums.size(),nums);
+    return res;
 }
