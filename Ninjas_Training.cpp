@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int memo[100000][100000];
+int memo[100000][4];
 int sub(int idx, int task, vector<vector<int>> &points, int n){
     int left,right;
     //base case
@@ -46,11 +46,4 @@ int ninjaTraining(int n, vector<vector<int>> &points)
         if(jump>max)max=jump;
     }
     return max;
-}
-
-int main(){
-    int n=3;
-    vector<vector<int>> points={{10,40,70},{20,50,80},{30,60,90}};
-    int a=ninjaTraining(n, points);
-    cout<<a;
 }
