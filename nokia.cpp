@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
+/*
 int target;
 
-/*
+
 int summation(set<int>s,int ele, int size){
     int left, right;
     for (itr = s.begin(); itr!=s.find(ele); itr++) {
@@ -63,7 +64,7 @@ int summation(vector <int>&v,int ele,int size){
     }
 
 }
-*/
+
 bool f(int idx, int sum, vector <int> &ds, int arr[],int n, vector <int> &s){
     if(idx==n){
         if(sum==target){
@@ -109,5 +110,56 @@ int main(){
         else cout<<0;
     }
  ;
+    return 0;
+}
+*/;
+
+int dac(int left, int right){
+    int sum=0, sum_left=0, sum_right=0;
+    //base cases
+    if(left==right) return 2;
+
+    int mid=(left+right)/2;
+
+    //cases
+    if((mid+1)<=right){
+        sum_right= dac(mid+1, right)+((right-mid)+1);
+    }
+    else  sum_right= 1;
+    if((mid-1)>=left){
+        sum_left=dac(left, mid-1)+((mid-left)+1);
+    }    
+    else sum_left= 1;
+    
+    //return sum
+    return sum_left+sum_right;
+}
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,m,max=0,min;
+        cin>>n>>m;
+        for (int i=2;i<n+2;i++){
+            max+=i;
+        }
+        min= dac(0,n-1);
+        // cout<<max<<endl<<min;
+        int flag=0;
+
+        for (int i=min;i<=max;i++){
+            if (i==m) {
+                cout<<0;
+                flag=1;
+                break;
+            }
+        }
+        if(flag==0) {
+            if(m>max) cout<<m-max;
+            else cout<<-1;
+        }
+    }
+
     return 0;
 }
