@@ -1,20 +1,43 @@
-#include <bits/stdc++.h> 
-int memo[15][15];
-int sub(int i, int j, int target_i, int target_j){
-    if(i==target_i && j==target_j)return 1;
-    if(memo[i][j]!=-1) return memo[i][j];
+#include <bits/stdc++.h>
+#define MOD 1000000007
+
+int path(int i, int j, int n, int m, vector< vector< int> > &mat, vector< vector< int> > &dp){
     int left=0,right=0;
-    if(i+1<=target_i)
-        left=sub(i+1, j, target_i, target_j);
-    if(j+1<=target_j)
-        right=sub(i, j+1, target_i, target_j);
-
-    return memo[i][j]= left+right;
+    //base cases
+    if(i==n-1 && j==m-1){
+        return 1;
+    }
+    //memoization
+    if(dp[i][j]!=-1){
+        return dp[i][j];
+    }
+    //special cases
+    else if(i==n-1){
+        if(mat[i][j]==0){
+            right=path(i,j+1,n,m, mat, dp);
+        }
+    }
+    else if(j==m-1){
+        if(mat[i][j]==0){
+            left=path(i+1,j,n,m, mat, dp);
+        }
+    }
+    else if(mat[i][j]==-1){
+        return 0;
+    }
+    else if(mat[i][j]==0){ 
+         left=path(i+1,j,n,m, mat, dp);
+         right=path(i,j+1,n,m, mat, dp);
+         
+    }
+    return dp[i][j]=(left+right)%MOD;
 }
-
-int uniquePaths(int m, int n) {
-    // Write your code here.
-    memset(memo, -1, sizeof(memo));
-    int count=sub(0,0,m-1, n-1);
-    return count;
+int mazeObstacles(int n, int m, vector< vector< int> > &mat) {
+    // Write your code here
+    vector<vector<int>> dp(n,vector<int>(m,-1));
+//     memset(dp,-1,sizeof(dp));
+//     memset(dp,-1,dp.size());
+    int count=path(0,0,n,m,mat, dp);
+    return (count%MOD);
+    
 }
