@@ -1,42 +1,45 @@
-#include <bits/stdc++.h>
-#include <iostream>
-using namespace std;
+int memo[200][10000];
 
-bool sumChecker(int idx,int sum1, int sum2,std::vector<int>arr,int n , int &memo[][][]){
+bool sub(int idx, int target,vector<int> &arr, int n){
+    bool pick=false, not_pick=false;
     //base case
-    if(idx==n){
-        if(sum1==sum2){
-            return true;
-        }
+    if(target==0){
+        return true;
+    }
+    
+    if(idx==n-1){
+        if(target==arr[idx]) return true;
         return false;
     }
-    if(memo[idx][sum1][sum2]!=-1) return memo[idx][sum1][sum2];
-
-    //adding into sum1
-    bool a= sumChecker(idx+1,sum1+arr[idx],sum2,arr, n,memo);
-    if(a==true){
-        return memo[idx][sum1][sum2]=1;
+    
+    //memoization
+    if(memo[idx][target]!=-1){
+        return memo[idx][target];
     }
-
-    //adding  into sum2
-    a=sumChecker(idx+1,sum1,sum2+arr[idx],arr, n,memo);
-    if(a==true){
-        return memo[idx][sum1][sum2]= 1;
+    //cases
+    if(arr[idx]<=target){
+        pick =sub(idx+1, target-arr[idx], arr,n);
+        if(pick==true) {            
+            return memo[idx][target]= true;
+        }
     }
-
-    //return
-    return memo[idx][sum1][sum2]=0;
+    not_pick=sub(idx+1, target, arr,n);
+    if(not_pick==true) {
+        return memo[idx][target]=true;
+    }
+   
+    return  memo[idx][target]= false;
 }
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        int n= nums.size(), sum=0;
+        memset(memo,-1,sizeof(memo));
+        for(auto x=nums.begin();x!=nums.end();x++){
+            sum+=*x;
+        }
+        if(sum%2!=0) return false;
+        return sub(0,sum/2,nums,n);
+    }
+};
 
-bool canPartition(std::vector<int> &arr,int n){
-    int memo[100][10000][10000];
-    memset(memo,-1,sizeof(memo));
-    return sumChecker(0,0,0,arr,n,memo);
-}
-
-int  main(){    
-    std:: vector<int>v={1,1,1,4};
-    bool a=canPartition(v,4);
-    std::cout<<a;
-    return 0;
-}
