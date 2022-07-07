@@ -80,6 +80,7 @@ given_number=257;
 ```
 ### Check if a number is even or odd without %.
 
+```
 Explanation: 
 All the even numbers have 0 as LSB. and odd numbers have 1 as LSB.
   15= 1 1 1 1 
@@ -93,7 +94,7 @@ All the even numbers have 0 as LSB. and odd numbers have 1 as LSB.
      = 0 0 0
 
 Therefore if the ans is 0, its even. If answer is 1, its odd.
-
+```
 ```
 given=15;
 mask=1;
