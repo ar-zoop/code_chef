@@ -88,8 +88,8 @@ All the even numbers have 0 as LSB. and odd numbers have 1 as LSB.
        =0 0 0 1 
 
    4= 1 0 0
-mask= &0 0 1
--------------
+ mask= &0 0 1
+ -------------
      = 0 0 0
 
 Therefore if the ans is 0, its even. If answer is 1, its odd.
