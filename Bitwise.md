@@ -33,7 +33,7 @@ int i=040, j=0x20, k,l,m;
 ```
 
 ##  Binary Conversion
-64 32 16 8 4 2 1 -> the places have how much value
+64 32 16 8 4 2 1 -> the places have how much value <\br>
 0  1  0  0 0 0 0  = 32
 
 ## Bit Manipulation
@@ -87,12 +87,12 @@ All the even numbers have 0 as LSB. and odd numbers have 1 as LSB.
   -------------
        =0 0 0 1 
 
-    4= 1 0 0
+   4= 1 0 0
 mask= &0 0 1
 -------------
      = 0 0 0
 
-    Therefore if the ans is 0, its even. If answer is 1, its odd.
+Therefore if the ans is 0, its even. If answer is 1, its odd.
 
 ```
 given=15;
@@ -112,7 +112,7 @@ given=given|mask;
 cout<<given;
 ```
 
-###3. resetBit()
+### 3. resetBit()
 example- set the 4th bit of 1111 as 0.
 ```
 int given = 16;
