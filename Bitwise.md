@@ -1,5 +1,6 @@
 # Bitwise manipulations
 ## Basic Operations
+```
 i is octal. 
 
 j is hexadecimal;
@@ -21,6 +22,7 @@ m=i^j
 1 0 0 0 0 0
 -----------
 0 0 0 0 0 0
+```S
 
 ```
 int i=040, j=0x20, k,l,m;
