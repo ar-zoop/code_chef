@@ -33,7 +33,7 @@ int i=040, j=0x20, k,l,m;
 ```
 
 ##  Binary Conversion
-64 32 16 8 4 2 1 -> the places have how much value <\br>
+64 32 16 8 4 2 1 -> the places have how much value <br>
 0  1  0  0 0 0 0  = 32
 
 ## Bit Manipulation
