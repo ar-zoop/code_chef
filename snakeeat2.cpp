@@ -26,10 +26,12 @@ int main(){
        for(int q=0;q<que;q++){
             if(mpp.find(queries[q])!=mpp.end()){
                 imp=mpp.find(queries[q]);
-                cout <<imp->second;
+                // cout<<"hello";
+                cout <<imp->second<<endl;
             }
             else{
                 int index = upper_bound(length, length+n, queries[q]-1) - length;
+                cout<<"index"<<index<<endl;
                 int count=n-index;
                 int end=index-1;
                 if(end==0){
