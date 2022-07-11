@@ -1,35 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 int main(){
     int t;
     cin>>t;
     while(t--){
-        int n1,n2,m;
+        long long n1,n2,m;
         cin>>n1>>n2>>m;
-        int max=m*(m+1)/2;
-        if(max<=min(n1,n2)){
+        long long max=m*(m+1)/2;
+        long long a,b;
+        if (n1>n2) { 
+          
+            b=n2;
+        }
+        else   {            
+            b=n1;
+        }
+        if(max<b){
             n1-=max;
             n2-=max;
-
-        }
-        else if(n1<=m && n2<=m){
-            int mini=min(n1,n2);
-            n1-=mini;
-            n2-=mini;
-        }
-        
-        else if(n1<=m || n2<=m){
-            int mini=min(n1,n2);
-            n1-=mini;
-            n2-=mini;
         }
         else{
-            int mini=min(n1,n2);
-            n1-=mini;
-            n2-=mini;
+            n1-=b;
+            n2-=b;
         }
-       cout<<n1+n2<<endl;
+        cout<<n1+n2<<endl;
+
     }
     return 0;
 }
