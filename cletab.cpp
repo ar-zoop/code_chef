@@ -22,16 +22,38 @@ int main() {
 	    }
         int count=0;
         for(int i=0;i<m;i++){
-            int mini=INT_MAX,j,ele;
-            for(j=0;j<n;j++){                
-                if(mini>map_c[chairs[j]]){
-                    mini=map_c[chairs[j]];
-                    ele=j;
+            int mini=INT_MAX,j,ele, flag=-1;
+            for(j=0;j<n;j++){   
+                if(chairs[j]==c[i]){
+                    map_c[c[i]]--;
+                    flag=1;
+                    break;
                 }
+                else if  (chairs[j]==0){
+                    count++;
+                    // cout<<"pass0 ";
+                    chairs[j]=c[i];
+                    flag=1;
+                    map_c[c[i]]--;
+                    break;
+                }
+                
             }
-            chairs[j]=c[i];
-            map_c[c[i]]--;
-            count++;     
+            if(flag==-1)
+                {for(j=0;j<n;j++){
+                    if(map_c[chairs[j]]==0){
+                        ele=j;
+                        break;
+                    }
+                    else if(mini>map_c[chairs[j]]){
+                        mini=map_c[chairs[j]];
+                        ele=j;
+                    }
+                }
+                chairs[j]=c[i];
+                map_c[c[i]]--;
+                // cout<<"pass 1";
+                count++;   }  
         }
         cout<<count<<endl;
 	}
