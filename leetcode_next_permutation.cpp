@@ -16,9 +16,9 @@ public:
             for (int i=nums.size()-1;i>=0;i--){
                 if(nums[i]>nums[index1]){
                     index2= i;
-                    int temp=nums[index2];
-                    nums[index2]=nums[index1];
-                    nums[index1]=temp;
+                    // int temp=nums[index2];
+                    // nums[index2]=nums[index1];
+                    // nums[index1]=temp;
                     // cout<<"here";
                     // cout<<nums[index1]<<nums[index2];
                     break;
