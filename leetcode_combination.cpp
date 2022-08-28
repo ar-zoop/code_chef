@@ -9,10 +9,10 @@ public:
         
         //take
         ds.push_back(idx);
-        sub(idx+1, ds, r, arr, n, res);
+        sub(idx+1, ds, r, n, res);
         //not take
         ds.pop_back();
-        sub(idx+1, ds, r, arr, n, res);
+        sub(idx+1, ds, r, n, res);
         
     }
     
