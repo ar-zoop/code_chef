@@ -1,6 +1,3 @@
-/*14 10
-10 16 8 13 19 16 2 2 12 6 4 15 13 2*/
-
 class Solution{
 public:	
 	int longSubarrWthSumDivByK(int arr[], int n, int k)
@@ -14,13 +11,13 @@ public:
 	        if(prefix%k==0) maxi=i+1;
 	        
 	        int rem=prefix%k;
+	        if(rem < 0) rem += k;
 	        if(lastRec.find(rem)!=lastRec.end()){
-	            map<int , int> :: iterator imp=lastRec.find(rem);
-	            int subLen= i-(imp->second);
+	            int subLen= i-(lastRec[rem]);
 	            maxi=max(subLen, maxi);
 	        }
 	        
-	        if(lastRec.find(rem)==lastRec.end()) lastRec[rem]=i;
+	        else lastRec[rem]=i;
 	    }
 	    return maxi;
 	}
