@@ -1,22 +1,18 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        stack <char> st;
-        // if(s==" ") return 1;
+        string st="";
         for (int i=0; i<s.length();i++){
             if(isalnum(s[i])){
-                st.push(tolower(s[i]));
+                st+=tolower(s[i]);
             }
         }
-        for(int i=0; i<s.length();i++){            
-            if(isalnum(s[i])){
-                if(st.empty()) return 0;
-                char a = tolower(s[i]);
-                // cout<<st.top()<<"=="<<a<<endl;
-                if((st.top())!=a) return 0;
-                st.pop();
-            }
+        // cout<<st<<endl;
+        int n=st.length()-1;
+        for(int i=0;i<st.length()/2;i++){
+            if(st[i]!=st[n-i]) return 0;
         }
+        
         return 1;
     }
 };
