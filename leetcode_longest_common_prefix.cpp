@@ -1,38 +1,39 @@
-#include <bits/stdc++.h>
-using namespace std;
-vector<string> strs={"flower","flow","flight"};
-string longestCommonPrefix() {
-   
-    string s="";
-    char a= strs[0][0];
-    int flag=0;
-    for(int i=0 ; i< strs.size() ; i++){
-        // cout<<"pass1";
-        int j=0;
-        while(j<3){
-            // cout<<"pass2";
-            if(a==strs[i][j] && i==strs.size()-1){
-                s+=a;
-                j++;
+class Solution {
+public:
+    string compare(string str1, string str2){
+        int n;
+        string common="";
+        if(str1.length() < str2.length()){
+            n=str1.length();
+        }
+        n=str2.length();
+        for(int i=0;i<n;i++){
+            if(str1[i]==str2[i]){
+                common+=str1[i];
             }
-            else if(a==strs[i][j] ){
-                j++;
-                continue;
+            else return common;
+        }
+        return common;
+    }
+    
+    string longestCommonPrefix(vector<string>& strs) {
+        string str1, str2, common="";
+        if(strs.size()>0){
+            str1=strs[0];
+            if(strs.size()>1){
+                str2=strs[1];
+                common=compare(str1,str2);
+                if(strs.size()>2){
+                    for(int i=2 ; i<strs.size() ;i++){
+                        common=compare(common, strs[i]);
+                    }
+                }
             }
             else{
-                flag=1;
-                break;
+                common=strs[0];
             }
+            
         }
-        if (flag==1) break;
+        return common;
     }
-    return s;
-}
-
-int main(){
-    // Solution obj1;
-    string s;
-    s=longestCommonPrefix();
-    cout<<s;
-
-}
+};
