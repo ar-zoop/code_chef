@@ -37,3 +37,24 @@ public:
         return maxi;
     }
 };
+
+//-------------------------OPTIMIZED SOLUTION---------------------
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+        int sptr=0, maxi=0,eptr=0, size=s.length();
+        vector<int>freq(92,0);
+        while(eptr<size){  
+            freq[s[eptr]]++;
+            maxi=max(maxi,freq[s[eptr]]);
+            // eptr++;
+            
+            if(eptr-sptr-maxi+1>k){
+                freq[s[sptr]]--;
+                sptr++;
+            }  
+           eptr++;
+        }
+        return eptr-sptr;
+    }
+};
