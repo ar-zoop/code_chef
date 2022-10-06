@@ -1,4 +1,6 @@
+class Solution
 {
+    
     public:
         vector <int> search(string pat, string txt)
         {
@@ -22,25 +24,26 @@
 
             start=0;
             int pat_len=pat.length();
-            for(int i=0;i<txt.length();i++){
+            int i=0;
+            while(i<txt.length()){
                 if(start<pat_len && txt[i]==pat[start]){
                     start++;
                     if(start==pat_len){
                         res.push_back(i-pat_len+2);
                         start=lps[start-1];
-                        // cout<<"push_back "<<start<<endl;
-                        // if(txt[i]==pat[start]){
-                        //     start++;
-                        //     // cout<<"here";
-                        // }
+                        
+                
                     }
+                    i++;
                    
                 }
                 else{
                     // cout<<"here";
                        if(start>0)
                             start=lps[start-1];
-                        
+                        else{
+                            i++;
+                        }
                    
                     // cout<<start<<endl;
                     
@@ -49,3 +52,5 @@
             }
             return res;
         }
+     
+};
