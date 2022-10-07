@@ -1,0 +1,3 @@
+Products: A / B / C / D / E / F 
+Staging: 10 / 10 / 10 / 10 / 10 / 10
+Photo: 20 / 20 / 20 / 20 / 20 / 20
