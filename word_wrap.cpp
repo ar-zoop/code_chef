@@ -9,7 +9,7 @@ public:
             take=func(idx+1, remspace-nums[idx]-1,nums,k);
         }
         if(remspace>=0)
-            not_take=func(idx+1, k-nums[idx]-1, nums, k)+ (remspace*remspace);
+            not_take=func(idx+1, k-nums[idx]-1, nums, k)+ ((remspace+1)*(remspace+1));
         else
             not_take=func(idx+1, k-nums[idx]-1, nums, k);
         
