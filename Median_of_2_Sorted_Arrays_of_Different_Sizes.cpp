@@ -1,3 +1,5 @@
+//SC: O(1)
+//TC: O(n+m)
 class Solution
 {
 public:
