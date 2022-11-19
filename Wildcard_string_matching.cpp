@@ -1,58 +1,38 @@
+#include <bits/stdc++.h>
 class Solution{
     public:
+
+   int memo[1000][1000];
+    bool recur(int i, int j, string &wild, string &pattern){
+        if(i<0 && j<0)  return true;
+        if(i<0 && j>=0) return false;
+        if(j<0 && i>=0) {
+            
+            for (int k=0; k<=i; k++){
+                if(wild[k]!='*') return false;
+            }
+            return true;
+        }
+        if(memo[i][j]!=-1) return memo[i][j];
+        if(wild[i]==pattern[j] || wild[i]=='?') return memo[i][j]= recur(i-1, j-1, wild, pattern);
+        else if (wild[i]=='*'){
+            if(recur(i-1, j,wild, pattern) || recur(i, j-1, wild, pattern)) return memo[i][j]= true;
+            else return memo[i][j]= false;
+        }
+        else{
+            return memo[i][j]= false;
+        }
+        
+    }
+    
     bool match(string wild, string pattern)
     {
-        int w=wild.length();
-        int p=pattern.length();
-        int start=0, end=0;
-        int i=0, j=0;
-        while(i<w){
-            int start,end;
-            if(wild[i]=='?') {
-                i++;
-                j++;
-            }
-            else if(wild[i]=='*'){
-                if(i<p-1)
-                i++;
-                start=i;
-                while(wild[i]!='*' && i<w){
-                    i++;
-                }
-                if(start==w-1){
-                    return true;
-                }
-                end=i;
-                int temp=start;
-                while(j<p && start<end){
-                    if(wild[j]==pattern[start]){
-                        j++;
-                        start++;
-                    }
-                    else{
-                        start=temp;
-                        j++;
-                    }
-                }
-                if(start!=end){
-                    cout<<"here";
-                    return false;
-                }
-            }
-            else{
-                if(wild[i]==pattern[j]){
-                    i++;
-                    j++;
-                }
-                else{
-                    
-                    return false;
-                }
+        // code here
+        for(int i=0; i<wild.length(); i++){
+            for(int j=0; j<pattern.length(); j++){
+                memo[i][j]=-1;
             }
         }
-        if(j==p)
-            return true;
-        else 
-            return false;
+        return recur(wild.length()-1,pattern.length()-1,wild,pattern);
     }
 };
