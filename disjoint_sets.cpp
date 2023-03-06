@@ -1,3 +1,5 @@
+//time complexity is O(1). It is basically constant.
+
 #include <bits/stdc++.h>
 using  namespace std;
  
@@ -21,7 +23,10 @@ class disjointSet{
         int upu, upv;
         upu=getParent(u);
         upv=getParent(v);
-        if(upu==upv){ cout<<"Cycle detected"; return;}
+        if(upu==upv){ 
+            // cout<<"Cycle detected";
+            return;
+        }
         if(rank[upu]>rank[upv]){
             parent[upv]=upu;
         }
@@ -41,7 +46,7 @@ class disjointSet{
         upv = getParent(v);
         if (upu == upv)
         {
-            cout << "Cycle detected";
+            // cout << "Cycle detected";
             return;
         }
         if (size[upu] > size[upv])
